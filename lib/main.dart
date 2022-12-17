@@ -17,7 +17,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(title: 'Daily'),
+      home: const HomeScreen(),
     );
   }
 }
