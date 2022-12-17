@@ -1,4 +1,4 @@
-import 'package:daily/widgets/common/todo_item.dart';
+import 'package:daily/widgets/common/task_item.dart';
 import 'package:flutter/material.dart';
 
 class ContentSection extends StatelessWidget {
@@ -14,7 +14,7 @@ class ContentSection extends StatelessWidget {
         shrinkWrap: true,
         padding: EdgeInsets.zero,
         itemCount: todo.length,
-        itemBuilder: (context, index) => TodoItem(
+        itemBuilder: (context, index) => TaskItem(
           label: todo[index],
           description: 'Test description',
           dimmed: index > 0,

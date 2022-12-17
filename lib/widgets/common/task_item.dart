@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TodoItem extends StatelessWidget {
-  TodoItem(
+class TaskItem extends StatelessWidget {
+  TaskItem(
       {super.key, required this.label, this.description, this.dimmed = false});
 
   final String label;
