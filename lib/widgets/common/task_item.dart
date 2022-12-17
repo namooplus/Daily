@@ -1,32 +1,46 @@
+import 'package:daily/entities/task.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TaskItem extends StatelessWidget {
-  TaskItem(
-      {super.key, required this.label, this.description, this.dimmed = false});
+  const TaskItem({super.key, required this.task, this.dimmed = false});
 
-  final String label;
-  final String? description;
+  final Task task;
   final bool dimmed;
-
-  late final TextStyle textStyle = dimmed
-      ? const TextStyle(color: Colors.grey)
-      : const TextStyle(color: Colors.black);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(label, style: textStyle),
-            if (description != null) ...[
-              const SizedBox(height: 5),
-              Text(description!, style: textStyle)
+      child: Opacity(
+        opacity: dimmed ? 0.5 : 1,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                task.label,
+                style: const TextStyle(fontSize: 17),
+              ),
+              if (task.dateTime != null) ...[
+                const SizedBox(height: 7),
+                Row(children: [
+                  const Icon(Icons.access_time, size: 15),
+                  const SizedBox(width: 5),
+                  Text(DateFormat('yyyy-MM-dd HH:mm').format(task.dateTime!))
+                ])
+              ],
+              if (task.location != null) ...[
+                const SizedBox(height: 7),
+                Row(children: [
+                  const Icon(Icons.location_on_outlined, size: 15),
+                  const SizedBox(width: 5),
+                  Text(task.location!)
+                ])
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
